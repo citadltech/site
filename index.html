@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CITADL</title>
+
+  <meta name="description" content="Strategy. Systems. Execution." />
+  <meta name="robots" content="index,follow,noarchive" />
+  <meta name="theme-color" content="#2D2D2D" />
+
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap');
+
+    html, body {
+      background: #2D2D2D;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      text-transform: uppercase;
+      color: #d6d6d6;
+      letter-spacing: 0.14em; 
+      animation: fadeIn 2s ease;
+    }
+
+    img {
+      display: block;
+      height: auto;
+      margin: 1vh 0;
+      opacity: 0;
+      animation: imageFade 1.5s ease forwards;
+    }
+    img:first-of-type { width: clamp(90px, 15vw, 160px); }
+    img:last-of-type  { width: clamp(120px, 22vw, 230px); animation-delay: .8s; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes imageFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .form-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 6vh;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80vw;
+      max-width: 300px;
+      transform: scaleX(1.08); 
+      transform-origin: center;
+    }
+
+    input, textarea {
+      width: 100%;
+      background: none;
+      border: 0.5px solid rgba(255, 255, 255, 0.25);
+      color: #d6d6d6;
+      font-weight: 100;
+      font-size: clamp(7px, 1.3vw, 9px);
+      text-transform: uppercase;
+      letter-spacing: 0.14em; 
+      padding: 8px;
+      margin-bottom: 10px;
+      outline: none;
+      text-align: left;
+      box-sizing: border-box;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+      font-weight: 100;
+    }
+
+    textarea {
+      height: 70px;
+      resize: none;
+    }
+
+    button {
+      background: none;
+      border: 0.5px solid rgba(255, 255, 255, 0.25);
+      color: #d6d6d6;
+      font-weight: 100;
+      text-transform: uppercase;
+      letter-spacing: 0.21em; 
+      font-size: clamp(7px, 1.3vw, 9px);
+      padding: 6px 22px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      letter-spacing: 0.25em;
+      transition: 0.4s ease;
+    }
+
+    #form-status {
+      font-size: clamp(6px, 1.1vw, 8px);
+      color: rgba(255, 255, 255, 0.35);
+      margin-top: 10px;
+      min-height: 12px;
+      font-weight: 100;
+      letter-spacing: 0.14em;
+    }
+  </style>
+</head>
+<body>
+  <img src="logo.svg" alt="CITADL logo" />
+  <img src="tagline.svg" alt="Strategy. Systems. Execution." />
+
+  <div class="form-wrapper">
+    <form id="contact-form" action="https://formspree.io/f/xblqjlon" method="POST">
+      <input type="email" name="email" placeholder="return channel" required />
+      <textarea name="message" placeholder="unfiltered data" required></textarea>
+      <button type="submit">dispatch</button>
+      <p id="form-status"></p>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      status.textContent = "sending...";
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          status.textContent = "message sent.";
+          form.reset();
+        } else {
+          status.textContent = "error. try again.";
+        }
+      } catch {
+        status.textContent = "network error.";
+      }
+    });
+  </script>
+</body>
+</html>
