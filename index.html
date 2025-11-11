@@ -1,206 +1,269 @@
 <!-- SGVsbG8gY3J5YmFiaWVzLg== -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>CITADL</title>
-<meta name="robots" content="index,follow,noarchive,nosnippet"/>
-<meta name="theme-color" content="#2D2D2D"/>
-<link rel="icon" href="logomark.svg" type="image/svg+xml"/>
+<meta name="robots" content="index,follow,noarchive,nosnippet" />
+<meta name="theme-color" content="#2D2D2D" />
+<link rel="icon" href="logomark.svg" type="image/svg+xml" />
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&family=Manrope:wght@100&display=swap');
-:root{--fg:rgba(255,255,255,0.95);--bg:#2D2D2D;--accent:orange}
-html,body{
-  background:var(--bg);
-  margin:0;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  font-family:'Manrope','Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;
-  text-transform:uppercase;
-  color:var(--fg);
-  letter-spacing:.14em;
-  font-weight:100;
-  overflow-x:hidden;
-  padding-top:10vh;
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300&display=swap");
+:root {
+  --fg: rgba(255, 255, 255, 0.5); 
+  --bg: #2d2d2d;
+  --accent: orange;
 }
-.container{
-  width:80vw;
-  max-width:420px;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
+html,
+body {
+  background: var(--bg);
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  color: var(--fg);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  overflow-x: hidden;
+  padding-top: 10vh;
 }
-.logo{
-  width:37.125%;
-  opacity:0.75;
-  margin-bottom:4vh;
-  animation:logoFade 1.2s ease-out forwards;
+.container {
+  width: 80vw;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
-@keyframes logoFade{from{opacity:0}to{opacity:0.75}}
-.content-block{
-  width:100%;
-  margin-top:2vh;
-  margin-bottom:3vh;
-  letter-spacing:.14em;
-  line-height:1.7;
-  font-size:clamp(9px,1.6vw,11px);
-  text-align:left;
-  white-space:pre-wrap;
-  word-break:normal;
+.logo {
+  width: 40.8%;
+  opacity: 0.75;
+  margin-bottom: 4vh;
+  animation: logoFade 1.2s ease-out forwards;
 }
-.cursor{
-  display:inline-block;
-  width:7px;
-  height:1em;
-  background:var(--accent);
-  margin-left:2px;
-  animation:blink .7s steps(1) infinite;
-  position:relative;
-  top:0.15em;
+@keyframes logoFade {
+  from { opacity: 0; }
+  to { opacity: 0.75; }
 }
-@keyframes blink{50%{background:transparent}}
-.form-wrapper{
-  width:100%;
-  margin-top:2vh;
-  opacity:0;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+.content-block {
+  width: 100%;
+  margin-top: 1.8vh;
+  margin-bottom: 2.8vh;
+  line-height: 1.7;
+  font-size: clamp(11.4px, 1.52vw, 13.3px); 
+  text-align: left;
+  white-space: pre-line;
+  text-indent: 0;
+  word-break: normal;
 }
-form{display:flex;flex-direction:column;width:100%;align-items:center}
-input,textarea{
-  width:100%;
-  background:none;
-  border:.5px solid rgba(255,255,255,.25);
-  color:var(--fg);
-  font-family:'Manrope','Inter',sans-serif;
-  font-weight:100;
-  font-size:clamp(9px,1.6vw,11px);
-  text-transform:uppercase;
-  letter-spacing:.14em;
-  padding:11px;
-  outline:none;
-  text-align:left;
-  box-sizing:border-box;
-  opacity:0;
-  transform:translateY(6px);
-  caret-color:var(--accent);
+.cursor {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  background: var(--accent);
+  margin-left: 2px;
+  animation: blink 0.7s steps(1) infinite;
+  position: relative;
+  top: 0.15em;
 }
-input:focus,textarea:focus{
-  color:var(--accent);
-  border-color:var(--accent);
+@keyframes blink { 50% { background: transparent; } }
+.divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+  margin: 22px 0 8px 0;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: all 0.8s ease;
 }
-input::placeholder,textarea::placeholder{
-  color:rgba(255,255,255,.35);
-  font-weight:100;
+.divider.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
-textarea{height:98px;resize:none}
-button{
-  background:none;
-  border:1px solid rgba(255,255,255,.35);
-  color:var(--fg);
-  font-family:'Manrope','Inter',sans-serif;
-  font-weight:100;
-  text-transform:uppercase;
-  letter-spacing:.21em;
-  font-size:clamp(8px,1.4vw,10px);
-  padding:8px 24px;
-  cursor:pointer;
-  transition:.3s ease;
-  opacity:0;
-  transform:translateY(6px);
-  align-self:flex-start;
-  margin-top:18px;
-  padding-left:11px;
-  width:auto;
+.form-wrapper {
+  width: 100%;
+  margin-top: 0.6vh;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-button:hover{background:rgba(255,255,255,.15);letter-spacing:.25em}
-#form-status{
-  font-size:clamp(8px,1.5vw,10px);
-  color:var(--accent);
-  margin-top:10px;
-  min-height:12px;
-  letter-spacing:.14em;
-  opacity:0;
-  text-align:left;
-  width:100%;
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
 }
-@keyframes fadeLine{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+input,
+textarea {
+  width: 100%;
+  background: none;
+  border: 0.5px solid rgba(255, 255, 255, 0.3);
+  color: var(--fg);
+  font-family: "Manrope", "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 13.3px; /* 5% smaller */
+  padding: 10px;
+  outline: none;
+  text-align: left;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(6px);
+  caret-color: var(--accent);
+  border-radius: 2px;
+}
+input:focus,
+textarea:focus {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+textarea {
+  height: 92px;
+  resize: none;
+}
+button {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--fg);
+  font-family: "Manrope", "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 12.35px; /* 5% smaller */
+  padding: 8px 24px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  opacity: 0;
+  transform: translateY(6px);
+  align-self: flex-start;
+  margin-top: 16px;
+  padding-left: 10px;
+  width: auto;
+  text-transform: none;
+}
+button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+#form-status {
+  font-size: 11.9px;
+  color: var(--accent);
+  margin-top: 8px;
+  min-height: 12px;
+  opacity: 0;
+  text-align: left;
+  width: 100%;
+}
+@keyframes fadeLine {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
 <div class="container">
-  <img class="logo" src="logo.svg" alt="CITADL logo"/>
-  <div id="paraBlock" class="content-block"><span id="para"></span><span class="cursor" id="paraCursor"></span></div>
-  <div id="convWrapper" class="content-block" style="margin-bottom:1vh;"><span id="conv"></span><span class="cursor" id="convCursor"></span></div>
+  <img class="logo" src="logo.svg" alt="CITADL logo" />
+  <div id="paraBlock" class="content-block">
+    <span id="para"></span><span class="cursor" id="paraCursor"></span>
+  </div>
+  <div id="divider" class="divider"></div>
+  <div id="convWrapper" class="content-block" style="margin-bottom:0.6vh;">
+    <span id="conv"></span><span class="cursor" id="convCursor"></span>
+  </div>
   <div id="formWrapper" class="form-wrapper">
     <form id="contact-form" action="https://formspree.io/f/xblqjlon" method="POST">
-      <input type="email" name="email" placeholder="your email (required)" required/>
-      <textarea name="message" placeholder="operational context" required></textarea>
-      <button type="submit">dispatch</button>
+      <input type="email" name="email" placeholder="Your email (required)" required />
+      <textarea name="message" placeholder="Operational context" required></textarea>
+      <button type="submit">Dispatch</button>
       <p id="form-status"></p>
     </form>
   </div>
 </div>
 <script>
-const paragraphText = `Every solution begins as a conversation.\n\nWhat follows is analysis, design, and iteration. The slow replacement of noise with structure. Systems drift when decisions go unexamined. Processes fragment when ownership fades. Clarity restores momentum.\n\nIteration refines intent. Listening anchors design. Relentless execution closes the loop. Sometimes that means building tools that think the way you do. Sometimes it means revealing the patterns buried in your numbers.\n\nTrue progress lives in the alignment of design, intent, and execution.\n\nSimplicity is not the absence of complexity. It is what remains when everything unnecessary is removed.`;
+const paragraphText =
+"Every solution begins as a conversation.\n\n" +
+"What follows is analysis, design, and iteration. The slow replacement of noise with structure. " +
+"Systems drift when decisions go unexamined. Processes fragment when ownership fades. " +
+"Clarity restores momentum.\n\n" +
+"Iteration refines intent and listening anchors design. Relentless execution closes the loop. " +
+"Sometimes that means building tools that think the way you do. " +
+"Sometimes it means revealing the patterns buried in your numbers.\n\n" +
+"True progress lives in the alignment of design, intent, and execution.\n\n" +
+"Simplicity is not the absence of complexity. It is what remains when everything unnecessary is removed.";
+
 const convoText = "Let's talk:";
-const paraEl = document.getElementById('para'), convEl = document.getElementById('conv');
-const paraCursor = document.getElementById('paraCursor'), convCursor = document.getElementById('convCursor');
-const formWrapper = document.getElementById('formWrapper'), inputs = formWrapper.querySelectorAll('input,textarea,button,#form-status');
+
+const paraEl = document.getElementById("para"),
+      convEl = document.getElementById("conv"),
+      paraCursor = document.getElementById("paraCursor"),
+      convCursor = document.getElementById("convCursor"),
+      formWrapper = document.getElementById("formWrapper"),
+      divider = document.getElementById("divider"),
+      inputs = formWrapper.querySelectorAll("input,textarea,button,#form-status");
 
 function typeWords(el, cursor, text, speed, done) {
-  const words = text.split(' ');
+  const words = text.split(" ");
   let i = 0;
   const tick = () => {
     if (i >= words.length) {
-      cursor.style.display = 'inline-block';
+      cursor.style.display = "inline-block";
       if (done) done();
       return;
     }
-    el.textContent += (i > 0 ? ' ' : '') + words[i];
+    el.textContent += (i > 0 ? " " : "") + words[i];
     i++;
     setTimeout(tick, speed);
   };
   tick();
 }
 
-function revealFormLines(){
-  inputs.forEach((el,i)=>setTimeout(()=>{el.style.animation='fadeLine .6s ease forwards'},i*120))
+function revealFormLines() {
+  inputs.forEach((el, i) =>
+    setTimeout(() => { el.style.animation = "fadeLine .6s ease forwards"; }, i * 120)
+  );
 }
 
-window.addEventListener('load',()=>{
-  setTimeout(()=>{
-    convCursor.style.display='none';
-    typeWords(paraEl, paraCursor, paragraphText, 120, ()=>{
-      paraCursor.style.display='none';
-      convCursor.style.display='inline-block';
-      setTimeout(()=>{
-        typeWords(convEl, convCursor, convoText, 180, ()=>{
-          formWrapper.style.opacity=1;
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    convCursor.style.display = "none";
+    typeWords(paraEl, paraCursor, paragraphText, 120, () => {
+      paraCursor.style.display = "none";
+      divider.classList.add("visible");
+      setTimeout(() => {
+        convCursor.style.display = "inline-block";
+        typeWords(convEl, convCursor, convoText, 160, () => {
+          formWrapper.style.opacity = 1;
           revealFormLines();
         });
-      },180);
+      }, 600);
     });
-  },240);
+  }, 300);
 });
 
-const form = document.getElementById('contact-form'), status = document.getElementById('form-status');
-form.addEventListener('submit', async e => {
+const form = document.getElementById("contact-form"),
+      status = document.getElementById("form-status");
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const data = new FormData(form), email = data.get('email');
-  if(!email){status.textContent='email required.';status.style.opacity=1;return;}
-  status.textContent='sending...';status.style.opacity=1;
-  try{
-    const r = await fetch(form.action,{method:form.method,body:data,headers:{Accept:'application/json'}});
-    r.ok ? (status.textContent='message sent.', form.reset()) : status.textContent='error. try again.';
-    status.style.opacity=1;
-  }catch{
-    status.textContent='network error.';status.style.opacity=1;
+  const data = new FormData(form), email = data.get("email");
+  if (!email) { status.textContent = "Email required."; status.style.opacity = 1; return; }
+  status.textContent = "Sending..."; status.style.opacity = 1;
+  try {
+    const r = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { Accept: "application/json" },
+    });
+    r.ok ? (status.textContent = "Message sent.", form.reset())
+         : (status.textContent = "Error. Try again.");
+    status.style.opacity = 1;
+  } catch {
+    status.textContent = "Network error.";
+    status.style.opacity = 1;
   }
 });
 </script>
