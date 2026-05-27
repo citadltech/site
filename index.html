@@ -10,13 +10,16 @@
 <meta name="robots" content="index,follow,noarchive,nosnippet" />
 <meta name="theme-color" content="#2D2D2D" />
 <link rel="icon" href="logomark.svg" type="image/svg+xml" />
+
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;700&display=swap");
+
 :root{
   --fg:rgba(255,255,255,0.68);
   --bg:#2D2D2D;
   --accent:orange;
 }
+
 html,body{
   background:var(--bg);
   margin:0;
@@ -32,6 +35,7 @@ html,body{
   overflow-x:hidden;
   padding-top:10vh;
 }
+
 .container{
   width:80vw;
   max-width:460px;
@@ -39,29 +43,33 @@ html,body{
   flex-direction:column;
   align-items:flex-start;
 }
+
 .logo{
   width:40.8%;
   opacity:.75;
   margin-bottom:3vh;
   animation:logoFade 1.2s ease-out forwards;
 }
+
 @keyframes logoFade{from{opacity:0}to{opacity:.75}}
 
 .content-block{
   width:100%;
-  margin-top:.8vh;
-  margin-bottom:2.5vh;
-  line-height:1.7;
+  margin-top:.4vh;
+  margin-bottom:1.6vh;
+  line-height:1.68;
   font-size:clamp(11.4px,1.52vw,13.3px);
   text-align:left;
   white-space:normal;
   text-indent:0;
   word-break:normal;
 }
+
 .fadeable{
   opacity:0;
-  transition:opacity 2.2s ease-in-out;
+  transition:opacity 1.5s ease-in-out;
 }
+
 .visible{opacity:1;}
 
 .bold-intro{
@@ -69,7 +77,7 @@ html,body{
   line-height:1.45;
   font-weight:200;
   color:rgba(255,255,255,0.88);
-  margin-bottom:4vh;
+  margin-bottom:3vh;
   letter-spacing:0.01em;
 }
 
@@ -80,8 +88,9 @@ html,body{
   margin:20px 0 6px 0;
   opacity:0;
   transform:translateY(-10px);
-  transition:all 1.2s ease-in-out;
+  transition:all 1.0s ease-in-out;
 }
+
 .divider.visible{opacity:1;transform:translateY(0);}
 
 .form-wrapper{
@@ -93,12 +102,14 @@ html,body{
   gap:10px;
   transition:opacity 1.0s ease-in-out;
 }
+
 form{
   display:flex;
   flex-direction:column;
   width:100%;
   align-items:flex-start;
 }
+
 input,textarea{
   width:100%;
   background:none;
@@ -116,9 +127,15 @@ input,textarea{
   caret-color:var(--accent);
   border-radius:2px;
 }
+
 input:focus,textarea:focus{color:var(--accent);border-color:var(--accent);}
 input::placeholder,textarea::placeholder{color:rgba(255,255,255,.4);}
-textarea{height:92px;resize:none;}
+
+textarea{
+  height:92px;
+  resize:none;
+}
+
 button{
   background:none;
   border:1px solid rgba(255,255,255,.35);
@@ -137,7 +154,9 @@ button{
   width:auto;
   text-transform:none;
 }
+
 button:hover{background:rgba(255,255,255,.15);}
+
 #form-status{
   font-size:11.9px;
   color:var(--accent);
@@ -149,6 +168,7 @@ button:hover{background:rgba(255,255,255,.15);}
 }
 </style>
 </head>
+
 <body>
 <div class="container">
   <img class="logo" src="logo.svg" alt="CITADL logo"/>
@@ -164,48 +184,15 @@ button:hover{background:rgba(255,255,255,.15);}
   </div>
 
   <div class="content-block">
-    <span class="fadeable">Systems slow down when friction becomes normalized. Decisions drift. Ownership fragments. Momentum disappears beneath process, politics, and accumulated complexity.</span>
+    <span class="fadeable">Systems slow down when friction becomes normalized. Decisions drift. Ownership fragments. Complexity compounds beneath process, misalignment, and operational drag. Velocity returns when the real constraints are identified and addressed directly.</span>
   </div>
 
   <div class="content-block">
-    <span class="fadeable">Velocity returns when the real constraints are identified and addressed directly.</span>
+    <span class="fadeable">Complex systems rarely fail because of a single issue. Delays emerge when communication fragments, priorities drift, and coordination becomes reactive instead of deliberate. Some problems require systems design. Others require operational discipline and sustained execution in the field. The work changes depending on the environment. The objective does not. Alignment requires intention.</span>
   </div>
 
   <div class="content-block">
-    <span class="fadeable">We value clarity, transparency, and accountability. Alignment becomes possible when reality is understood clearly and ownership is visible.</span>
-  </div>
-
-  <div class="content-block">
-    <span class="fadeable">The daily grind is where momentum is won or lost. Complexity compounds. Communication degrades. Small inefficiencies become operational drag.</span>
-  </div>
-
-  <div class="content-block">
-    <span class="fadeable">Relentless execution closes the loop.</span>
-  </div>
-
-  <div class="content-block">
-    <span class="fadeable">Sometimes the solution is technological. Sometimes the obstacle is operational. More often, progress depends on identifying what is actually preventing momentum and addressing it directly.</span>
-  </div>
-
-  <div class="content-block">
-    <span class="fadeable">We work quickly because momentum matters. Problems rarely improve by waiting another day.</span>
-  </div>
-
-  <div class="content-block">
-    <span class="fadeable">Inventiveness matters. Hard work matters. Accountability matters.</span>
-  </div>
-
-  <div class="content-block">
-    <span class="fadeable">Not everyone is comfortable with that level of transparency.</span>
-  </div>
-
-  <div class="content-block">
-    <span class="fadeable">True progress lives in the alignment of design, intent, and execution.</span>
-  </div>
-
-  <!-- Outro -->
-  <div class="content-block">
-    <span class="fadeable" id="outro">Simplicity is not the absence of complexity. It is what remains when everything unnecessary is removed.</span>
+    <span class="fadeable">We value clarity, transparency, and accountability. We work quickly because momentum matters. Problems rarely improve by waiting another day. True progress lives in the alignment of design, intent, and execution. Simplicity is not the absence of complexity. It is what remains when everything unnecessary is removed.</span>
   </div>
 
   <div id="divider" class="divider"></div>
@@ -224,7 +211,7 @@ button:hover{background:rgba(255,255,255,.15);}
 </div>
 
 <script>
-const coreFadeables = document.querySelectorAll('.fadeable:not(#convWrapper)'); // exclude "Let's talk"
+const coreFadeables = document.querySelectorAll('.fadeable:not(#convWrapper)');
 const divider = document.getElementById('divider');
 const conv = document.getElementById('convWrapper');
 const formWrapper = document.getElementById('formWrapper');
@@ -238,25 +225,22 @@ function revealFormLines(){
 }
 
 window.addEventListener("load",()=>{
-  // fade intro + sentences + outro with overlap
   coreFadeables.forEach((el,i)=>{
-    setTimeout(()=>el.classList.add("visible"), i*1600); // 25% overlap on 2.2s fades
+    setTimeout(()=>el.classList.add("visible"), i*1050);
   });
 
-  const total = coreFadeables.length * 1600;
+  const total = coreFadeables.length * 1050;
 
-  // Divider appears BEFORE “Let’s talk:”
-  setTimeout(()=>divider.classList.add("visible"), total - 600);
+  setTimeout(()=>divider.classList.add("visible"), total - 350);
 
-  // “Let’s talk:” fades right after the divider starts
   setTimeout(()=>{
     conv.style.transition = 'opacity 1.0s ease-in-out';
     conv.style.opacity = 1;
-    // Form follows quickly
+
     setTimeout(()=>{
       formWrapper.style.opacity = 1;
       revealFormLines();
-    }, 400);
+    }, 260);
   }, total - 200);
 });
 
@@ -278,29 +262,3 @@ form.addEventListener("submit",async e=>{
 </script>
 </body>
 </html>
-
-
-<!--⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠛⠛⠛⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠙⠛⠛⠛⠿⠻⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⡀⠠⠤⠒⢂⣉⣉⣉⣑⣒⣒⠒⠒⠒⠒⠒⠒⠒⠀⠀⠐⠒⠚⠻⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⡠⠔⠉⣀⠔⠒⠉⣀⣀⠀⠀⠀⣀⡀⠈⠉⠑⠒⠒⠒⠒⠒⠈⠉⠉⠉⠁⠂⠀⠈⠙⢿⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠔⠁⠠⠖⠡⠔⠊⠀⠀⠀⠀⠀⠀⠀⠐⡄⠀⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠉⠲⢄⠀⠀⠀⠈⣿⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⠋⠀⠀⠀⠀⠀⠀⠀⠊⠀⢀⣀⣤⣤⣤⣤⣀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠜⠀⠀⠀⠀⣀⡀⠀⠈⠃⠀⠀⠀⠸⣿⣿⣿⣿
-⣿⣿⣿⣿⡿⠥⠐⠂⠀⠀⠀⠀⡄⠀⠰⢺⣿⣿⣿⣿⣿⣟⠀⠈⠐⢤⠀⠀⠀⠀⠀⠀⢀⣠⣶⣾⣯⠀⠀⠉⠂⠀⠠⠤⢄⣀⠙⢿⣿⣿
-⣿⡿⠋⠡⠐⠈⣉⠭⠤⠤⢄⡀⠈⠀⠈⠁⠉⠁⡠⠀⠀⠀⠉⠐⠠⠔⠀⠀⠀⠀⠀⠲⣿⠿⠛⠛⠓⠒⠂⠀⠀⠀⠀⠀⠀⠠⡉⢢⠙⣿
-⣿⠀⢀⠁⠀⠊⠀⠀⠀⠀⠀⠈⠁⠒⠂⠀⠒⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⢀⣀⡠⠔⠒⠒⠂⠀⠈⠀⡇⣿
-⣿⠀⢸⠀⠀⠀⢀⣀⡠⠋⠓⠤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠀⠀⠀⠀⠀⠈⠢⠤⡀⠀⠀⠀⠀⠀⠀⢠⠀⠀⠀⡠⠀⡇⣿
-⣿⡀⠘⠀⠀⠀⠀⠀⠘⡄⠀⠀⠀⠈⠑⡦⢄⣀⠀⠀⠐⠒⠁⢸⠀⠀⠠⠒⠄⠀⠀⠀⠀⠀⢀⠇⠀⣀⡀⠀⠀⢀⢾⡆⠀⠈⡀⠎⣸⣿
-⣿⣿⣄⡈⠢⠀⠀⠀⠀⠘⣶⣄⡀⠀⠀⡇⠀⠀⠈⠉⠒⠢⡤⣀⡀⠀⠀⠀⠀⠀⠐⠦⠤⠒⠁⠀⠀⠀⠀⣀⢴⠁⠀⢷⠀⠀⠀⢰⣿⣿
-⣿⣿⣿⣿⣇⠂⠀⠀⠀⠀⠈⢂⠀⠈⠹⡧⣀⠀⠀⠀⠀⠀⡇⠀⠀⠉⠉⠉⢱⠒⠒⠒⠒⢖⠒⠒⠂⠙⠏⠀⠘⡀⠀⢸⠀⠀⠀⣿⣿⣿
-⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠑⠄⠰⠀⠀⠁⠐⠲⣤⣴⣄⡀⠀⠀⠀⠀⢸⠀⠀⠀⠀⢸⠀⠀⠀⠀⢠⠀⣠⣷⣶⣿⠀⠀⢰⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠁⢀⠀⠀⠀⠀⠀⡙⠋⠙⠓⠲⢤⣤⣷⣤⣤⣤⣤⣾⣦⣤⣤⣶⣿⣿⣿⣿⡟⢹⠀⠀⢸⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠑⠀⢄⠀⡰⠁⠀⠀⠀⠀⠀⠈⠉⠁⠈⠉⠻⠋⠉⠛⢛⠉⠉⢹⠁⢀⢇⠎⠀⠀⢸⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣀⠈⠢⢄⡉⠂⠄⡀⠀⠈⠒⠢⠄⠀⢀⣀⣀⣰⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⢀⣎⠀⠼⠊⠀⠀⠀⠘⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⡀⠉⠢⢄⡈⠑⠢⢄⡀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⠀⠀⢀⠀⠀⠀⠀⠀⢻⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣀⡈⠑⠢⢄⡀⠈⠑⠒⠤⠄⣀⣀⠀⠉⠉⠉⠉⠀⠀⠀⣀⡀⠤⠂⠁⠀⢀⠆⠀⠀⢸⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣄⡀⠁⠉⠒⠂⠤⠤⣀⣀⣉⡉⠉⠉⠉⠉⢀⣀⣀⡠⠤⠒⠈⠀⠀⠀⠀⣸⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣶⣶⣤⣤⣤⣤⣀⣀⣤⣤⣤⣶⣾⣿⣿⣿⣿⣿
-Vs lbh ner ernqvat guvf, V yvir erag serr va lbhe zvaqf
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿-->
