@@ -1,6 +1,6 @@
-<!-- SGVsbG8gY3J5YmFiaWVzLg== -->
+<!--- SGVsbG8gY3J5YmFiaWVzLg== --->
+<!--- Vs lbh ner ernqvat guvf, V yvir erag serr va lbhe zvaqf --->
 
-<!-- Vs lbh ner ernqvat guvf, V yvir erag serr va lbhe zvaqf -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,32 +8,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>CITADL</title>
 <meta name="robots" content="index,follow,noarchive,nosnippet" />
-<meta name="theme-color" content="#2D2D2D" />
+<meta name="theme-color" content="#1a1a1a" />
 <link rel="icon" href="logomark.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;700&display=swap");
-
 :root{
   --fg:rgba(255,255,255,0.68);
-  --bg:#2D2D2D;
-  --accent:orange;
+  --fg-bright:rgba(255,255,255,0.88);
+  --bg:#1a1a1a;
+  --accent:#e87820;
+  --mono:"JetBrains Mono",monospace;
+  --display:"Rajdhani",sans-serif;
 }
+
+*{box-sizing:border-box;margin:0;padding:0}
 
 html,body{
   background:var(--bg);
-  margin:0;
   min-height:100vh;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:flex-start;
-  font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
+  font-family:var(--mono);
   color:var(--fg);
   font-weight:300;
-  letter-spacing:0.02em;
+  letter-spacing:0.03em;
   overflow-x:hidden;
   padding-top:10vh;
+  padding-bottom:10vh;
+}
+
+/* grain — above content but below logo layer */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:100;
+  opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat:repeat;
+  background-size:180px 180px;
+}
+
+/* scanlines — below logo (logo z-index 200) */
+#scanlines{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:150;
+  background:repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,0.055) 3px,
+    rgba(0,0,0,0.055) 4px
+  );
 }
 
 .container{
@@ -42,165 +76,212 @@ html,body{
   display:flex;
   flex-direction:column;
   align-items:flex-start;
+  position:relative;
+  z-index:10;
 }
 
+/* logo above scanlines and grain */
 .logo{
   width:40.8%;
-  opacity:.75;
-  margin-bottom:3vh;
-  animation:logoFade 1.2s ease-out forwards;
-}
-
-@keyframes logoFade{from{opacity:0}to{opacity:.75}}
-
-.content-block{
-  width:100%;
-  margin-top:.4vh;
-  margin-bottom:1.6vh;
-  line-height:1.68;
-  font-size:clamp(11.4px,1.52vw,13.3px);
-  text-align:left;
-  white-space:normal;
-  text-indent:0;
-  word-break:normal;
-}
-
-.fadeable{
   opacity:0;
-  transition:opacity 1.5s ease-in-out;
+  margin-bottom:3vh;
+  will-change:opacity;
+  transition:opacity 0.5s ease-out;
+  position:relative;
+  z-index:200;
 }
 
-.visible{opacity:1;}
+/* CITADL text fallback — shown while/if SVG missing, styled in Rajdhani */
+#logoText{
+  font-family:var(--display);
+  font-size:clamp(28px,4vw,42px);
+  font-weight:600;
+  letter-spacing:0.18em;
+  color:rgba(255,255,255,0.82);
+  margin-bottom:3vh;
+  opacity:0;
+  transition:opacity 0.5s ease-out;
+  display:none;
+  position:relative;
+  z-index:200;
+}
 
-.bold-intro{
-  font-size:clamp(19px,2.2vw,26px);
-  line-height:1.45;
+/* all body text — typewriter typed in one stream */
+#typeBody{
+  width:100%;
+  font-family:var(--mono);
+  font-size:clamp(10.8px,1.38vw,12.4px);
+  line-height:1.78;
+  letter-spacing:0.022em;
   font-weight:200;
-  color:rgba(255,255,255,0.88);
-  margin-bottom:3vh;
-  letter-spacing:0.01em;
+  color:var(--fg);
+  white-space:pre-wrap;
+  word-break:break-word;
+  position:relative;
+  z-index:10;
 }
 
-.divider{
-  width:100%;
-  height:1px;
-  background:rgba(255,255,255,0.25);
-  margin:20px 0 6px 0;
+/* hero intro line — display, all caps, accent tint */
+#introLine{
+  display:inline;
+  font-family:var(--display);
+  font-size:clamp(18px,2.6vw,28px);
+  font-weight:400;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:rgba(232,120,32,0.72);
+  line-height:1.3;
+  white-space:pre-wrap;
+  word-break:break-word;
+}
+
+#introWrapper{
+  display:block;
+  margin-bottom:0.05em;
+}
+
+/* terminal cursor */
+#termCursor{
+  display:inline-block;
+  width:.55em;
+  height:0.9em;
+  background:var(--accent);
+  margin-left:2px;
+  vertical-align:text-bottom;
+  animation:termBlink 1s step-start infinite;
+}
+
+/* terminal cursor — sized to intro line (Rajdhani) */
+#termCursor{
+  display:inline-block;
+  width:.52em;
+  height:.75em;
+  background:var(--accent);
+  margin-left:3px;
+  vertical-align:middle;
+  animation:termBlink 1s step-start infinite;
+  font-size:clamp(18px,2.6vw,28px);
+}
+
+/* body cursor — sized to body mono font */
+#bodyCursor{
+  display:inline-block;
+  width:.52em;
+  height:.75em;
+  background:var(--accent);
+  margin-left:2px;
+  vertical-align:middle;
   opacity:0;
-  transform:translateY(-10px);
-  transition:all 1.0s ease-in-out;
+  font-size:clamp(10.8px,1.38vw,12.4px);
 }
 
-.divider.visible{opacity:1;transform:translateY(0);}
+@keyframes termBlink{0%,100%{opacity:1}50%{opacity:0}}
 
-.form-wrapper{
+/* glitch */
+.glitch-active{
+  animation:glitch 150ms steps(1,end) forwards !important;
+}
+
+@keyframes glitch{
+  0%  {clip-path:inset(0 0 82% 0);transform:translateX(-3px);filter:hue-rotate(80deg)}
+  20% {clip-path:inset(45% 0 28% 0);transform:translateX(3px);filter:hue-rotate(-80deg)}
+  40% {clip-path:inset(15% 0 55% 0);transform:translateX(-2px)}
+  60% {clip-path:inset(75% 0 8% 0);transform:translateX(2px)}
+  80% {clip-path:inset(0 0 0 0);transform:translateX(0);filter:none}
+  100%{clip-path:none;transform:none;filter:none}
+}
+
+/* form area */
+.form-area{
   width:100%;
-  margin-top:.3vh;
   opacity:0;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  transition:opacity 1.0s ease-in-out;
+  transition:opacity 0.9s ease-in-out;
+  position:relative;
+  z-index:10;
 }
 
-form{
-  display:flex;
-  flex-direction:column;
-  width:100%;
-  align-items:flex-start;
+#letsLabel{
+  font-family:var(--mono);
+  font-size:clamp(10px,1.2vw,11.5px);
+  color:var(--accent);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-top:36px;
+  margin-bottom:14px;
 }
+
+form{display:flex;flex-direction:column;width:100%;align-items:flex-start}
 
 input,textarea{
   width:100%;
   background:none;
-  border:.5px solid rgba(255,255,255,.3);
+  border:.5px solid rgba(255,255,255,.22);
   color:var(--fg);
-  font-family:"Manrope","Inter",sans-serif;
+  font-family:var(--mono);
   font-weight:300;
-  font-size:13.3px;
+  font-size:12.5px;
+  letter-spacing:0.025em;
   padding:10px;
   outline:none;
-  text-align:left;
-  box-sizing:border-box;
-  opacity:0;
-  transform:translateY(6px);
   caret-color:var(--accent);
   border-radius:2px;
+  transition:border-color 0.2s,color 0.2s;
+  opacity:0;
+  transition:opacity 0.7s ease-in-out, border-color 0.2s, color 0.2s;
 }
 
-input:focus,textarea:focus{color:var(--accent);border-color:var(--accent);}
-input::placeholder,textarea::placeholder{color:rgba(255,255,255,.4);}
-
-textarea{
-  height:92px;
-  resize:none;
-}
+input:focus,textarea:focus{color:var(--accent);border-color:var(--accent)}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.28)}
+textarea{height:92px;resize:none;margin-top:8px}
+input{margin-top:0}
 
 button{
   background:none;
-  border:1px solid rgba(255,255,255,.35);
-  color:var(--fg);
-  font-family:"Manrope","Inter",sans-serif;
-  font-weight:300;
-  font-size:12.35px;
-  padding:8px 24px;
+  border:1px solid var(--accent);
+  color:var(--accent);
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.12em;
+  padding:8px 18px;
   cursor:pointer;
-  transition:.3s ease;
+  transition:.25s ease;
   opacity:0;
-  transform:translateY(6px);
   align-self:flex-start;
   margin-top:14px;
-  padding-left:10px;
-  width:auto;
-  text-transform:none;
+  text-transform:uppercase;
+  border-radius:1px;
 }
 
-button:hover{background:rgba(255,255,255,.15);}
+button:hover{background:rgba(232,120,32,0.12);color:rgba(255,255,255,0.9);border-color:rgba(232,120,32,0.7)}
 
 #form-status{
-  font-size:11.9px;
+  font-family:var(--mono);
+  font-size:10.8px;
+  letter-spacing:0.08em;
   color:var(--accent);
   margin-top:8px;
   min-height:12px;
   opacity:0;
-  text-align:left;
   width:100%;
+  transition:opacity 0.4s ease;
 }
 </style>
 </head>
 
 <body>
+
+<div id="scanlines"></div>
+
 <div class="container">
-  <img class="logo" src="logo.svg" alt="CITADL logo"/>
 
-  <!-- Intro -->
-  <div class="content-block">
-    <span class="fadeable bold-intro">Every solution begins as a conversation.</span>
-  </div>
+  <img class="logo" id="siteLogo" src="logo.svg" alt="CITADL"
+       onerror="this.style.display='none';document.getElementById('logoText').style.display='block'"/>
+  <div id="logoText">CITADL</div>
 
-  <!-- Main -->
-  <div class="content-block" id="main">
-    <span class="fadeable">What follows is analysis, design, and execution under real-world constraints.</span>
-  </div>
+  <div id="typeBody"><div id="introWrapper"><span id="introLine"></span><span id="termCursor"></span></div><span id="bodyText"></span><span id="bodyCursor"></span></div>
 
-  <div class="content-block">
-    <span class="fadeable">Systems slow down when friction becomes normalized. Decisions drift. Ownership fragments. Complexity compounds beneath process, misalignment, and operational drag. Velocity returns when the real constraints are identified and addressed directly.</span>
-  </div>
-
-  <div class="content-block">
-    <span class="fadeable">Complex systems rarely fail because of a single issue. Delays emerge when communication fragments, priorities drift, and coordination becomes reactive instead of deliberate. Some problems require systems design. Others require operational discipline and sustained execution in the field. The work changes depending on the environment. The objective does not. Alignment requires intention.</span>
-  </div>
-
-  <div class="content-block">
-    <span class="fadeable">We value clarity, transparency, and accountability. We work quickly because momentum matters. Problems rarely improve by waiting another day. True progress lives in the alignment of design, intent, and execution. Simplicity is not the absence of complexity. It is what remains when everything unnecessary is removed.</span>
-  </div>
-
-  <div id="divider" class="divider"></div>
-
-  <!-- Removed .fadeable here; we animate this explicitly AFTER the divider -->
-  <div id="convWrapper" class="content-block" style="margin-bottom:0.6vh; opacity:0;">Let's talk:</div>
-
-  <div id="formWrapper" class="form-wrapper">
+  <div class="form-area" id="formArea">
+    <div id="letsLabel">Let's talk:</div>
     <form id="contact-form" action="https://formspree.io/f/xblqjlon" method="POST">
       <input type="email" name="email" placeholder="Your email (required)" required/>
       <textarea name="message" placeholder="Operational context" required></textarea>
@@ -208,57 +289,165 @@ button:hover{background:rgba(255,255,255,.15);}
       <p id="form-status"></p>
     </form>
   </div>
+
 </div>
 
 <script>
-const coreFadeables = document.querySelectorAll('.fadeable:not(#convWrapper)');
-const divider = document.getElementById('divider');
-const conv = document.getElementById('convWrapper');
-const formWrapper = document.getElementById('formWrapper');
-const inputs = formWrapper.querySelectorAll("input,textarea,button,#form-status");
+const INTRO    = "EVERY SOLUTION BEGINS AS A CONVERSATION.";
+const BODY_PARAGRAPHS = [
+  "What follows is analysis, design, and execution under real-world constraints.",
+  "Systems slow down when friction becomes normalized. Decisions drift. Ownership fragments. Complexity compounds beneath process, misalignment, and operational drag. Velocity returns when the real constraints are identified and addressed directly.",
+  "We work across the full stack, from architecture and code to team structure, process, and delivery. Most problems that look organizational are also technical. Most that look technical are also organizational. We don't separate the two.",
+  "Complex systems rarely fail because of a single issue. Delays emerge when communication fragments, priorities drift, and coordination becomes reactive instead of deliberate. Some problems require systems design. Others require hands-on execution in the field.",
+  "We don't hand you a report and leave. We build, ship, and fix things ourselves, and we stay until it works.",
+  "We value clarity, transparency, and accountability. We move quickly because momentum matters. Problems rarely improve by waiting. Simplicity is not the absence of complexity. It is what remains when everything unnecessary is removed.",
+];
+const BODY_TEXT    = "\n\n" + BODY_PARAGRAPHS.join("\n\n");
+const CHAR_DELAY   = 6;   // 50% faster
+const INTRO_PAUSE  = 3000;
 
-function revealFormLines(){
-  inputs.forEach((el,i)=>setTimeout(()=>{
-    el.style.transition='opacity .8s ease-in-out';
-    el.style.opacity=1;
-  }, i*90));
+const typeBody   = document.getElementById('typeBody');
+const introLine  = document.getElementById('introLine');
+const bodyText   = document.getElementById('bodyText');
+const termCursor = document.getElementById('termCursor');
+const bodyCursor = document.getElementById('bodyCursor');
+const logo       = document.getElementById('siteLogo');
+const logoText   = document.getElementById('logoText');
+const divider    = document.getElementById('divider');
+const formArea   = document.getElementById('formArea');
+const inputs     = formArea.querySelectorAll("input,textarea,button,#form-status");
+
+// scroll: dim logo
+window.addEventListener('scroll',()=>{
+  const pct = Math.min(window.scrollY / 280, 1);
+  const op  = 0.75 - pct * 0.58;
+  logo.style.opacity     = op;
+  logoText.style.opacity = op;
+},{passive:true});
+
+// ambient flicker — more frequent, 2-6s intervals
+function scheduleFlicker(){
+  setTimeout(()=>{
+    document.body.style.transition = 'opacity 30ms';
+    document.body.style.opacity    = '0.88';
+    setTimeout(()=>{
+      document.body.style.opacity = '1';
+      setTimeout(()=>{
+        document.body.style.opacity = '0.93';
+        setTimeout(()=>{
+          document.body.style.opacity   = '1';
+          document.body.style.transition = '';
+          scheduleFlicker();
+        }, 45);
+      }, 28);
+    }, 32);
+  }, 2000 + Math.random() * 4000);
+}
+scheduleFlicker();
+
+// glitch on typeBody
+function fireGlitch(){
+  typeBody.classList.remove('glitch-active');
+  void typeBody.offsetWidth;
+  typeBody.classList.add('glitch-active');
+  setTimeout(()=> typeBody.classList.remove('glitch-active'), 180);
 }
 
-window.addEventListener("load",()=>{
-  coreFadeables.forEach((el,i)=>{
-    setTimeout(()=>el.classList.add("visible"), i*1050);
-  });
+// reveal form
+function revealForm(){
+  setTimeout(()=>{
+    formArea.style.opacity = '1';
+    inputs.forEach((el,i)=> setTimeout(()=>{
+      el.style.opacity = '1';
+    }, i * 100));
+  }, 400);
+}
 
-  const total = coreFadeables.length * 1050;
+function typeInto(text, el, delay, onDone, onMidpoint){
+  let i = 0;
+  const node = document.createTextNode('');
+  el.appendChild(node);
+  const mid = Math.floor(text.length * 0.45);
+  let midFired = false;
+  function tick(){
+    if(i < text.length){
+      node.textContent = text.slice(0, i + 1);
+      i++;
+      // mid-body glitch — fires once around 45% through
+      if(!midFired && i >= mid){
+        midFired = true;
+        onMidpoint && onMidpoint();
+      }
+      setTimeout(tick, delay);
+    } else { onDone && onDone(); }
+  }
+  tick();
+}
 
-  setTimeout(()=>divider.classList.add("visible"), total - 350);
+// boot sequence
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    logo.style.opacity     = '0.75';
+    logoText.style.opacity = '0.75';
+  }, 300);
 
   setTimeout(()=>{
-    conv.style.transition = 'opacity 1.0s ease-in-out';
-    conv.style.opacity = 1;
+    // phase 1 — type intro line, intro cursor visible
+    typeInto(INTRO, introLine, CHAR_DELAY, ()=>{
+      // cinematic pause — intro cursor holds for 3s
+      setTimeout(()=>{
+        // hide intro cursor immediately when body starts
+        termCursor.style.animation = 'none';
+        termCursor.style.transition = 'opacity 0.15s';
+        termCursor.style.opacity = '0';
 
-    setTimeout(()=>{
-      formWrapper.style.opacity = 1;
-      revealFormLines();
-    }, 260);
-  }, total - 200);
+        // show body cursor
+        bodyCursor.style.animation = 'termBlink 1s step-start infinite';
+        bodyCursor.style.opacity = '1';
+
+        typeInto(BODY_TEXT, bodyText, CHAR_DELAY, ()=>{
+          // done — double glitch, hide body cursor, show form
+          setTimeout(()=>{
+            fireGlitch();
+            setTimeout(()=> fireGlitch(), 220);
+            setTimeout(()=>{
+              bodyCursor.style.animation  = 'none';
+              bodyCursor.style.transition = 'opacity 0.4s';
+              bodyCursor.style.opacity    = '0';
+              setTimeout(revealForm, 500);
+            }, 600);
+          }, 200);
+        }, null, ()=> fireGlitch());
+      }, INTRO_PAUSE);
+    });
+  }, 700);
 });
 
-// form submission
-const form=document.getElementById("contact-form"),status=document.getElementById("form-status");
-form.addEventListener("submit",async e=>{
+// form submit
+const form   = document.getElementById('contact-form');
+const status = document.getElementById('form-status');
+
+form.addEventListener('submit', async e=>{
   e.preventDefault();
-  const data=new FormData(form),email=data.get("email");
-  if(!email){status.textContent="Email required.";status.style.opacity=1;return;}
-  status.textContent="Sending...";status.style.opacity=1;
-  try{
-    const r=await fetch(form.action,{method:form.method,body:data,headers:{Accept:"application/json"}});
-    r.ok?(status.textContent="Message sent.",form.reset()):status.textContent="Error. Try again.";
-    status.style.opacity=1;
-  }catch{
-    status.textContent="Network error.";status.style.opacity=1;
+  const data = new FormData(form);
+  if(!data.get('email')){
+    status.textContent = 'Email required.';
+    status.style.opacity = '1';
+    return;
   }
+  status.textContent = 'Transmitting...';
+  status.style.opacity = '1';
+  try{
+    const r = await fetch(form.action,{method:form.method,body:data,headers:{Accept:'application/json'}});
+    r.ok
+      ? (status.textContent = 'Transmitted.', form.reset())
+      : status.textContent  = 'Error. Retry.';
+  } catch {
+    status.textContent = 'Network error.';
+  }
+  status.style.opacity = '1';
 });
 </script>
+
 </body>
 </html>
